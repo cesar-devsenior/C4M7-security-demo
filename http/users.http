@@ -1,0 +1,37 @@
+###
+GET http://localhost:8080/api/users
+
+###
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+    "username": "cdiaz",
+    "password": "cdiaz123",
+    "email": "cdiaz@email.com",
+    "name": "Cesar Diaz",
+    "roles": [
+        "ADMIN",
+        "USER"
+    ]
+}
+
+###
+PUT http://localhost:8080/api/users/cdiaz
+Content-Type: application/json
+
+{
+    "username": "cdiaz",
+    "email": "cdiaz@email.com",
+    "name": "Cesar Diaz",
+    "roles": [
+        "ADMIN",
+        "USER"
+    ]
+}
+
+###
+PATCH http://localhost:8080/api/users/cdiaz/activate
+
+###
+PATCH http://localhost:8080/api/users/cdiaz/deactivate
