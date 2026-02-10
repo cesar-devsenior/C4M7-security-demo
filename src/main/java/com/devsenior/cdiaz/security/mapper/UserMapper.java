@@ -4,6 +4,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.devsenior.cdiaz.security.model.dto.CreateUserDto;
+import com.devsenior.cdiaz.security.model.dto.RegisterRequestDto;
 import com.devsenior.cdiaz.security.model.dto.UpdateUserDto;
 import com.devsenior.cdiaz.security.model.dto.UserResponseDto;
 import com.devsenior.cdiaz.security.model.entity.RoleEntity;
@@ -22,6 +23,11 @@ public interface UserMapper {
     @Mapping(target = "active", ignore = true)
     @Mapping(target = "roles", ignore = true)
     UserEntity toEntity(UpdateUserDto dto);
+
+    @Mapping(target = "hireDate", ignore = true)
+    @Mapping(target = "active", ignore = true)
+    @Mapping(target = "roles", ignore = true)
+    UserEntity toEntity(RegisterRequestDto dto);
 
     UserResponseDto toResponse(UserEntity entity);
 

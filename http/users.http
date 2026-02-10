@@ -1,5 +1,6 @@
 ###
 GET http://localhost:8080/api/users
+Authorization: Basic jcante:jcante123
 
 ###
 POST http://localhost:8080/api/users

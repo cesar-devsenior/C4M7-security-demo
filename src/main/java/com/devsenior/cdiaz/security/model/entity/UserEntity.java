@@ -8,6 +8,7 @@ import org.hibernate.type.YesNoConverter;
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -39,7 +40,7 @@ public class UserEntity {
     @Convert(converter = YesNoConverter.class)
     private Boolean active;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
         joinColumns = @JoinColumn(columnDefinition = "username"),
         inverseJoinColumns = @JoinColumn(columnDefinition = "role_id")
