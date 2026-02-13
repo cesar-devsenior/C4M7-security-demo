@@ -22,7 +22,9 @@ import com.devsenior.cdiaz.security.repository.UserRepository;
 import com.devsenior.cdiaz.security.util.JwtUtils;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class AuthServiceImpl implements AuthService {
@@ -37,6 +39,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     @Transactional(readOnly = true)
     public LoginResponseDto login(LoginRequestDto credentials) {
+        log.info("Ingresando a iniciar sesion");
         try {
             var auth = new UsernamePasswordAuthenticationToken(credentials.username(), credentials.password());
             authenticationManager.authenticate(auth);
@@ -53,6 +56,8 @@ public class AuthServiceImpl implements AuthService {
                 "roles", user.getRoles().stream()
                         .map(RoleEntity::getName)
                         .toList()));
+
+        log.info("Token: {}", token);
 
         return new LoginResponseDto(token, "JWT");
     }

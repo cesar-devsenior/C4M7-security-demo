@@ -28,6 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         var roles = user.getRoles().stream()
                 .map(RoleEntity::getName)
+                .map(s -> "ROLE_"+s)
                 .map(SimpleGrantedAuthority::new)
                 .toList();
 

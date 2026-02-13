@@ -1,16 +1,17 @@
 ###
 GET http://localhost:8080/api/users
-Authorization: Basic jcante:jcante123
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqY2FudGUiLCJpYXQiOjE3NzA5NDkwOTAsImV4cCI6MTc3MTAzNTQ5MCwicm9sZXMiOlsiR1VFU1QiXSwiZW1haWwiOiJqY2FudGV6QGVtYWlsLmNvbSIsIm5hbWUiOiJKb3PDqSBWZW50dXJhIENhbnRlIERpYXoiLCJoaXJlX2RhdGUiOiIyMDI2LTAyLTA1In0._DmpXowIVKOvJkfxSv3HkhHEDZ-qd8YonCrlN7eWdDw
 
 ###
 POST http://localhost:8080/api/users
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjZGlheiIsImlhdCI6MTc3MDk1MzI2MSwiZXhwIjoxNzcxMDM5NjYxLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iXSwiZW1haWwiOiJjZGlhekBlbWFpbC5jb20iLCJuYW1lIjoiQ2VzYXIgRGlheiIsImhpcmVfZGF0ZSI6IjIwMjYtMDItMDMifQ.cU3ouU8jYF9K5BwHwNoKrYSn7DNdMP_ACJ_8iTFH2-U
 
 {
-    "username": "cdiaz",
-    "password": "cdiaz123",
-    "email": "cdiaz@email.com",
-    "name": "Cesar Diaz",
+    "username": "vrincon3",
+    "password": "vrincon123",
+    "email": "vrincon3@email.com",
+    "name": "Victor David Rincon",
     "roles": [
         "ADMIN",
         "USER"

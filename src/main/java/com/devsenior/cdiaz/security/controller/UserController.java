@@ -3,6 +3,7 @@ package com.devsenior.cdiaz.security.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,23 +37,28 @@ public class UserController {
         return userService.getAll();
     }
 
+    @PreAuthorize("hasRole('ADMIN')") // ROLE_ADMIN
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping
     public UserResponseDto create(@RequestBody @Valid CreateUserDto dto) {
         return userService.create(dto);
     }
 
+    @PreAuthorize("hasRole('ADMIN') or principal.username == #username")
+    // @PreAuthorize("hasRole('ADMIN') or principal['username'] == #username")
     @PutMapping("/{username}")
     public UserResponseDto update(@PathVariable String username, @RequestBody @Valid UpdateUserDto dto) {
         return userService.update(dto);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PatchMapping("/{username}/activate")
     public void activate(@PathVariable String username) {
         userService.activate(username);
     }
 
+    @PreAuthorize("hasRole('ADMIN') or principal.username == #username") // ROLE_ADMIN
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @PatchMapping("/{username}/deactivate")
     public void deactivate(@PathVariable String username) {
